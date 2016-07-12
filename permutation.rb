@@ -1,6 +1,15 @@
 class Array
-  def permutation
-    get_permutation(self)
+  def permutation(size=nil)
+    case size
+    when 1
+      return self.map {|a| [a]}
+    when 2..self.length
+      return get_permutation(self).map {|a| a.take(size)}
+    when nil
+      return get_permutation(self)
+    else
+      return []
+    end
   end
 
   private
